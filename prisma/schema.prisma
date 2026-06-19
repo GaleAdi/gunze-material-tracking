@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Material {
+  id             String           @id @default(cuid())
+  barcode        String           @unique
+  nama_material  String
+  jenis          String
+  tanggal_masuk  DateTime         @default(now())
+  status_terakhir String?
+  divisi_terakhir  String?
+  created_at     DateTime         @default(now())
+  trackingHistory TrackingHistory[]
+}
+
+model TrackingHistory {
+  id         String   @id @default(cuid())
+  material_id String
+  material   Material @relation(fields: [material_id], references: [id], onDelete: Cascade)
+  divisi     String   // TWISTING | DYEING | WINDING | INSPEKSI | GUDANG
+  status     String   // MASUK | KELUAR | SELESAI
+  catatan    String?
+  timestamp  DateTime @default(now())
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  nama_produk String
+  deskripsi   String?
+  kategori    String?
+  gambar_url  String?
+  created_at  DateTime @default(now())
+}
+
+model AdminUser {
+  id           String @id @default(cuid())
+  username     String @unique
+  password_hash String
+}

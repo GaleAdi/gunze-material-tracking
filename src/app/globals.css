@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gunze-navy: #1a3a5c;
+  --gunze-navy-dark: #0f2840;
+  --gunze-navy-light: #234e7a;
+  --gunze-accent: #e8a020;
+  --gunze-bg: #f4f5f7;
+  --gunze-surface: #ffffff;
+  --gunze-border: #e2e5ea;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, sans-serif;
+    background-color: var(--gunze-bg);
+    color: #1f2937;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--gunze-navy);
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-[#1a3a5c] text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-[#234e7a] active:bg-[#0f2840] transition-all duration-200 shadow-sm hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 bg-white text-[#1a3a5c] border-2 border-[#1a3a5c] px-6 py-3 rounded-lg font-semibold text-sm hover:bg-[#1a3a5c] hover:text-white transition-all duration-200;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center gap-2 bg-[#e8a020] text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-[#d4920e] transition-all duration-200 shadow-sm;
+  }
+
+  .card {
+    @apply bg-white rounded-xl border border-[#e2e5ea] shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+
+  .navy-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#1a3a5c]/10 text-[#1a3a5c];
+  }
+
+  .stat-card {
+    @apply bg-white rounded-xl border border-[#e2e5ea] p-6 text-center shadow-sm;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
