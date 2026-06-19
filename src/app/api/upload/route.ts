@@ -3,6 +3,11 @@ import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 
 const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads");
+// TODO: Vercel filesystem is ephemeral — uploaded files will be lost on every
+// new deployment. Before go-live, replace this with a cloud storage solution
+// such as Vercel Blob (https://vercel.com/docs/storage/vercel-blob) or
+// Cloudinary (https://cloudinary.com). Update the POST handler to upload to
+// the external service and return the permanent URL instead of a local path.
 
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 const MAX_SIZE = 5 * 1024 * 1024; // 5MB
